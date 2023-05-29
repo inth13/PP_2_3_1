@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <meta charset="UTF-8">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Users</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td> <a th:href ="@{/edit/{id} (id=${user.id})}">edit</a></td>
+        <td> <a th:href = "@{/delete/{id} (id=${user.id})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<!--<a href="#" th:href="@{/add}">add new User</a>-->
+<a href="/new">user form</a>
+</body>
+</html>
