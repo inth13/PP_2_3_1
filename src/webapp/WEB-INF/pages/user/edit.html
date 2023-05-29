@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div.field {
+            padding-bottom: 5px;
+        }
+
+        div.field label {
+            display: block;
+            float: left;
+            width: 70px;
+            height: 15px;
+        }
+    </style>
+    <title>update</title>
+</head>
+<body>
+<p>editing user data</p>
+<input type="hidden" th:field="*{id}">
+<div class="field">
+    <label for="name">Name:</label>
+    <input type="text" th:field="*{name}" id="name"/>
+</div>
+<div class="field">
+    <label for="surname">Surname:</label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+</div>
+<div class="field">
+    <input type="submit" value="Update"/>
+</div>
+</form>
+</body>
+</html>

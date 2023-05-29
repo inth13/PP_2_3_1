@@ -9,4 +9,8 @@ public interface UserService {
     List<User> getAllUsers();
 
     void save(User user);
+
+    void remove(long id);
+
+    User find(long id);
 }

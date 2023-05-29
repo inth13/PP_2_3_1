@@ -1,32 +1,34 @@
 package web.dao;
 
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-
-    private SessionFactory sessionFactory;
-
-    public UserDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public void add(User user) {
-        sessionFactory.openSession().save(user);
+        entityManager.merge(user);
+    }
+
+    @Override
+    public void remove(long id) {
+        entityManager.remove(entityManager.find(User.class, id));
     }
 
     @Override
     public List<User> listUsers() {
-        return sessionFactory.openSession().createQuery("from User", User.class).getResultList();
+        return entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override
-    public void save(User user) {
-        sessionFactory.openSession().save(user);
+    public User find(long id) {
+        return entityManager.find(User.class, id);
     }
 }

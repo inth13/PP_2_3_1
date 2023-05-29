@@ -16,14 +16,10 @@ public class User {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "email")
-    private String email;
 
-
-    public User(String name, String surname, String email) {
+    public User(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.email = email;
     }
 
     public User(Long id, String name, String surname) {
@@ -57,13 +53,5 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
