@@ -18,6 +18,7 @@
 </head>
 <body>
 <p>editing user data</p>
+<form th:method="PATCH" th:action="@{/update}" th:object="${user}">
 <input type="hidden" th:field="*{id}">
 <div class="field">
     <label for="name">Name:</label>
